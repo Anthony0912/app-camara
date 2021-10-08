@@ -19,16 +19,22 @@
       dispositivoId: <input id="device" type="text" [(ngModel)]="device" style="width: 500px">
       <button (click)="cameraSwitched(device);" class="btn btn-primary m-5">Activate</button>
     </div>
+    <div class="snapshot" *ngIf="imageWebcam">
+      <h2>Nice one!</h2>
+      <img #image style="width: 500px" [src]="imageWebcam.imageAsDataUrl" />
+    </div>
+    <br>
+    <div class="snapshot">
+      <h4>Imagen localStorage</h4>
+      <img #image style="width: 500px" [src]="base64" />
+    </div>
   </div>
 
-  <div class="snapshot" *ngIf="imageWebcam">
-    <h2>Nice one!</h2>
-    <img [src]="imageWebcam.imageAsDataUrl" />
-  </div>
-
+  
   <h4 *ngIf="errors.length > 0">Messages:</h4>
   <ul *ngFor="let error of errors">
     <li>{{error | json}}</li>
   </ul>
 </div>
 <div>
+ 
